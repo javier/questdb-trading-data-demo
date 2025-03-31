@@ -4,8 +4,7 @@ This repository can be used as a quickstart to ingest and explore financial data
 uses Jupyter Notebook to get data from external sources and store into QuestDB, and it also uses Grafana to
 display near real-time dashboards.
 
-The repository includes example scripts to ingest data from two data
-sources:
+The repository includes example scripts to ingest data from two data sources:
 
     * US Equities Data (streamed from a historical file, simulating real-time trading)
     * Cryptocurrency trading data from OKX (the same data source powering the public demo at https://demo.questdb.io)
@@ -30,12 +29,12 @@ From the root directory of this repository, execute:
 
 `docker-compose up`
 
-This might take a few moments the first time, as it needs to download several docker images and initialize them. For reference, a cold
-start on an M1 laptop over a wired connection it takes between 30 seconds and 1 minute. Subsequent starts should be way
-faster. The downloaded images will use about 1Gb on your disk.
+This might take a few moments the first time, as it needs to download several docker images and initialize them. For
+reference, a cold start on an M1 laptop over a wired connection it takes between 30 seconds and 1 minute. Subsequent
+starts should be way faster. The downloaded images will use about 1Gb on your disk.
 
-If you notice any permissions error on the logs (typically Grafana complaining a folder is not writable), this is probably due to your system running docker
-as root. You can fix this by setting the following env variable:
+If you notice any permissions error on the logs (typically Grafana complaining a folder is not writable), this is
+probably due to your system running docker as root. You can fix this by setting the following env variable:
 
 ```
 export DOCKER_COMPOSE_USER_ID=$(id -u)
@@ -47,10 +46,12 @@ sudo DOCKER_COMPOSE_USER_ID=$(id -u) docker-compose up
 ```
 
 
-After a few moments, you should see the logs stabilize and stop scrolling fast. There will always be some log activity, but those appear only every few seconds.
+After a few moments, you should see the logs stabilize and stop scrolling fast. There will always be some log activity,
+ but those appear only every few seconds.
 
 
-If you want to stop the components at any point, you can just `ctrl+c` and you can restart later running `docker-compose up`. For more permanent removal, please do check the
+If you want to stop the components at any point, you can just `ctrl+c` and you can restart later running
+`docker-compose up`. For more permanent removal, please do check the
 [Stopping all the components](#stopping-all-the-components) section.
 
 
@@ -58,7 +59,7 @@ If you want to stop the components at any point, you can just `ctrl+c` and you c
 
 ### Ingesting the trading real-time data
 
-Once the infrastructure is up and running, you can navigate to `http://localhost:8888/`. You  will see three available
+Once the infrastructure is up and running, you can navigate to `http://localhost:8888/`. You  will see two available
 scripts/notebooks you can run directly from your browser:
 
 * http://localhost:8888/notebooks/00-Ingest-real-time-data-from-a-file.ipynb
