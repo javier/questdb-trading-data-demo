@@ -46,13 +46,14 @@ services:
       - ./questdb/questdb_root:/db_root:ro
     ports:
       - 8888:8888
-    command: sh -c "pip install questdb psycopg[binary] psycopg2-binary requests && start-notebook.sh --NotebookApp.password= --NotebookApp.token="
+    command: sh -c "pip install questdb databento psycopg[binary] psycopg2-binary requests && start-notebook.sh --NotebookApp.password= --NotebookApp.token="
     depends_on:
       - questdb
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
       - RESTARTABLE=yes
+      - DATABENTO_API_KEY=${DATABENTO_API_KEY}
       - DOCKER_STACKS_JUPYTER_CMD=notebook
       - QUESTDB_HTTP_ENDPOINT=${QUESTDB_HTTP_ENDPOINT:-host.docker.internal:9000}
       - QDB_CLIENT_HOST=${QDB_CLIENT_HOST:-host.docker.internal}

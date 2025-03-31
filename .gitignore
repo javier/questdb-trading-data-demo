@@ -4,24 +4,18 @@
 # Log file
 *.log
 
+#.env file
+.env
+
+# questdb
 questdb/questdb_root/*
 !questdb/questdb_rootdb/.gitkeep
 
+# grafana
+dashboard/grafana/home_dir/var_lib_grafana/*
+!dashboard/grafana/home_dir/var_lib_grafana/dashboards/
+
 # Jupyter notebook
-
-broker-1/kafka-data/*
-!broker-1/kafka-data/.gitkeep
-broker-1/kafka-secrets/*
-!broker-1/kafka-secrets/.gitkeep
-broker-1/tmp/*
-!broker-1/tmp/.gitkeep
-broker-2/kafka-data/*
-!broker-2/kafka-data/.gitkeep
-broker-2/kafka-secrets/*
-!broker-2/kafka-secrets/.gitkeep
-broker-2/tmp/*
-!broker-2/tmp/.gitkeep
-
 notebooks/.bash_history
 .cache/*
 notebooks/.jupyter/*
@@ -62,5 +56,3 @@ ingestion/go/github_events/github_events
 ilp_ingestion.iml
 .vscode/
 
-dashboard/grafana/home_dir/var_lib_grafana/*
-!dashboard/grafana/home_dir/var_lib_grafana/dashboards/
