@@ -6,6 +6,7 @@ display near real-time dashboards.
 
 The repository includes example scripts to ingest data from two data
 sources:
+
     * US Equities Data (streamed from a historical file, simulating real-time trading)
     * Cryptocurrency trading data from OKX (the same data source powering the public demo at https://demo.questdb.io)
 
