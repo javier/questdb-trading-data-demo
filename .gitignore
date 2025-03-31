@@ -14,6 +14,8 @@ questdb/questdb_root/*
 # grafana
 dashboard/grafana/home_dir/var_lib_grafana/*
 !dashboard/grafana/home_dir/var_lib_grafana/dashboards/
+dashboards/grafana/home_dir/var_lib_grafana/*
+!dashboards/grafana/home_dir/var_lib_grafana/dashboards/
 
 # Jupyter notebook
 notebooks/.bash_history

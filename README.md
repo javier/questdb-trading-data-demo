@@ -4,11 +4,10 @@ This repository can be used as a quickstart to ingest and explore financial data
 uses Jupyter Notebook to get data from external sources and store into QuestDB, and it also uses Grafana to
 display near real-time dashboards.
 
-The repository includes example scripts to ingest data from three data
+The repository includes example scripts to ingest data from two data
 sources:
+    * US Equities Data (streamed from a historical file, simulating real-time trading)
     * Cryptocurrency trading data from OKX (the same data source powering the public demo at https://demo.questdb.io)
-    * Cryptocurrency data from a CSV file
-    * US Equities Data from Databento.
 
 
 To make installation of dependencies as simple as possible, this repository includes a `docker-compose.yml` file that
@@ -21,15 +20,6 @@ starts everything in one go.
 ## Pre-requisites
 
 A working installation of Docker and docker-compose.
-
-
-The Cryptocurrency examples don't have any other requirements, but if you want to get US Equities data from Databento, you
-need to provide a Databento API KEY. If you don't have one, you can register and start a free trial. Please refer to
-[Databento pricing](https://databento.com/pricing) for more details.
-
-Once you have the API Key, you can set up as an environment variable named `DATABENTO_API_KEY`, or if you prefer you
-can create a local file named `.env` with the API key. An example of such file is provided in the repository with the
-name `.env.example`.
 
 
 ## Starting up via Docker-compose
@@ -70,11 +60,11 @@ If you want to stop the components at any point, you can just `ctrl+c` and you c
 Once the infrastructure is up and running, you can navigate to `http://localhost:8888/`. You  will see three available
 scripts/notebooks you can run directly from your browser:
 
-* http://localhost:8888/notebooks/Capture-Cryptocurrency-live-data.ipynb
-* http://localhost:8888/notebooks/Ingest-real-time-data-from-a-file.ipynb
-* http://localhost:8888/notebooks/Ingest-US-Equity-Trades-Databento.ipynb
+* http://localhost:8888/notebooks/00-Ingest-real-time-data-from-a-file.ipynb
+* http://localhost:8888/notebooks/01-Capture-digital-assets-live-data.ipynb
 
-The three scripts read data from different sources, but the data will be stored in a single table named `trades`,
+
+The two scripts read data from different sources, but the data will be stored in a single table named `trades`,
 independently where the data is coming from.  The schema of the table is shown below. If the table does not exist, it
 will be automatically created on the first write.
 
@@ -102,7 +92,7 @@ For some more realistic queries, please open in a new tab the
 ### Visualization using a third party dashboard
 
 If you want to see your live data on a real-time dashboard, please navigate in a new tab to
-[the demo dashboard](http://localhost:3000/d/trades-crypto-currency/trades-crypto-currency?orgId=1&refresh=250ms) powered
+[the demo dashboard](http://localhost:3000/d/live-trades-demo/live-trades-demo) powered
 by Grafana. The user is `admin` and password `quest`
 
 

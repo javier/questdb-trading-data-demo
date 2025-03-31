@@ -26,8 +26,8 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-      - ./dashboard/grafana/home_dir/var_lib_grafana:/var/lib/grafana/:rw
-      - ./dashboard/grafana/home_dir/etc_grafana:/etc/grafana/:rw
+      - ./dashboards/grafana/home_dir/var_lib_grafana:/var/lib/grafana/:rw
+      - ./dashboards/grafana/home_dir/etc_grafana:/etc/grafana/:rw
     environment:
       - GF_INSTALL_PLUGINS=questdb-questdb-datasource
       - QDB_CLIENT_HOST=host.docker.internal
@@ -46,14 +46,13 @@ services:
       - ./questdb/questdb_root:/db_root:ro
     ports:
       - 8888:8888
-    command: sh -c "pip install questdb databento cryptofeed psycopg[binary] psycopg2-binary requests && start-notebook.sh --NotebookApp.password= --NotebookApp.token="
+    command: sh -c "pip install questdb cryptofeed psycopg[binary] psycopg2-binary requests && start-notebook.sh --NotebookApp.password= --NotebookApp.token="
     depends_on:
       - questdb
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
       - RESTARTABLE=yes
-      - DATABENTO_API_KEY=${DATABENTO_API_KEY}
       - DOCKER_STACKS_JUPYTER_CMD=notebook
       - QUESTDB_HTTP_ENDPOINT=host.docker.internal:9000
       - QDB_CLIENT_HOST=host.docker.internal
