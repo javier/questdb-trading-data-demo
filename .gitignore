@@ -41,6 +41,7 @@ target/
 *.zip
 *.tar.gz
 *.rar
+pulse.jar
 
 node_modules/
 
