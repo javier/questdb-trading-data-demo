@@ -1,8 +1,8 @@
 # questdb-trading-data-demo
 
 This repository can be used as a quickstart to ingest and explore financial data with QuestDB. The project
-uses Jupyter Notebook to get data from external sources and store into QuestDB, and it also uses Grafana to
-display near real-time dashboards.
+uses Jupyter Notebook to get data from external sources and store into QuestDB, and it also uses either Grafana or
+Pulse to display near real-time dashboards.
 
 The repository includes example scripts to ingest data from two data sources:
 
@@ -14,7 +14,7 @@ To make installation of dependencies as simple as possible, this repository incl
 starts everything in one go.
 
 
-![trading data dashboard](trading_data_dashboard_screenshot.png)
+![trading data dashboard powred by Grafana](grafana_trading_data_dashboard_screenshot.png)
 
 
 ## Pre-requisites
@@ -96,10 +96,15 @@ For some more realistic queries, please open in a new tab the
 
 ### Visualization using a third party dashboard
 
-If you want to see your live data on a real-time dashboard, please navigate in a new tab to
-[the demo dashboard](http://localhost:3000/d/live-trades-demo/live-trades-demo) powered
-by Grafana. The user is `admin` and password `quest`
+This demo includes two different real-time dashboard, one powered by Grafana, and one powered by Pulse.
 
+If you want to see your live data on a Grafana dashboard, please navigate in a new tab to
+[the demo Grafana dashboard](http://localhost:3000/d/live-trades-demo/live-trades-demo). The user is `admin` and password `quest`
+
+If you want to see your live data on a Pulse dashboard, please navigate in a new tab to
+[the demo Pulse dashboard](http://localhost:8080/dash/29/Live%20Trades%20Demo). More info at ]Pulse](https://www.timestored.com/pulse/).
+
+![trading data dashboard powered by Pulse](./pulse_trading_dashboard.png)
 
 ## Stopping all the components
 
