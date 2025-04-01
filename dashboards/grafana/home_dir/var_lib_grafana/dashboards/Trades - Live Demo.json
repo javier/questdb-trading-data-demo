@@ -269,7 +269,7 @@
       },
       "gridPos": {
         "h": 11,
-        "w": 7,
+        "w": 8,
         "x": 0,
         "y": 0
       },
@@ -393,7 +393,7 @@
       "gridPos": {
         "h": 11,
         "w": 8,
-        "x": 7,
+        "x": 8,
         "y": 0
       },
       "id": 3,
@@ -531,7 +531,7 @@
       "gridPos": {
         "h": 11,
         "w": 8,
-        "x": 15,
+        "x": 16,
         "y": 0
       },
       "id": 5,
@@ -719,7 +719,7 @@
           "editorMode": "code",
           "format": 1,
           "rawQuery": true,
-          "rawSql": "SELECT timestamp as time, first(price) as open, last(price) as close, min(price) as lo, max(price) as hi, sum(amount) as vol\nFROM trades\nWHERE symbol = 'NVDA' and $__timeFilter(timestamp) \nSAMPLE BY 5s ALIGN TO CALENDAR",
+          "rawSql": "SELECT timestamp as time, first(price) as open, last(price) as close, min(price) as lo, max(price) as hi, sum(amount) as vol\nFROM trades\nWHERE symbol = 'NVDA' and $__timeFilter(timestamp) \nSAMPLE BY 2s ALIGN TO CALENDAR",
           "refId": "A",
           "selectedFormat": 2,
           "sql": {
@@ -774,13 +774,16 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -944,156 +947,6 @@
         "type": "questdb-questdb-datasource",
         "uid": "P0F15568B0DD880D0"
       },
-      "description": "Calculation of the Pearson correlation coefficient (ρ) between the prices of Ethereum and Bitcoin. Data is sampled every minute over the past 12 hours, and correlation is calculated over hour- and day-long windows.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "semi-dark-purple",
-            "mode": "palette-classic",
-            "seriesBy": "last"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "hourly_corr_rolling"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "semi-dark-purple",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "daily_corr_rolling"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "blue",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 24,
-        "x": 0,
-        "y": 19
-      },
-      "id": 7,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "maxHeight": 600,
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "postgres",
-            "uid": "P0F15568B0DD880D0"
-          },
-          "editorMode": "code",
-          "format": 1,
-          "rawQuery": true,
-          "rawSql": "WITH data as (\nWITH \nTSLA as (select timestamp, price from trades where $__timeFilter(timestamp) and symbol = 'TSLA' ),\nNVDA as (select timestamp, price from trades where $__timeFilter(timestamp) and symbol = 'NVDA' )\nSELECT NVDA.timestamp, corr(NVDA.price,TSLA.price) from NVDA asof join TSLA sample by 10s)\nSELECT timestamp\n, avg(corr) over(ORDER BY timestamp range between 1 minute preceding and current row) one_min_corr_rolling\n, avg(corr) over(ORDER BY timestamp range between 5 minute preceding and current row) five_min_corr_rolling\nfrom data",
-          "refId": "A",
-          "selectedFormat": 2,
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        }
-      ],
-      "title": "Rolling NVDA-TSLA correlation coefficient",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "default": true,
-        "type": "questdb-questdb-datasource",
-        "uid": "P0F15568B0DD880D0"
-      },
       "description": "An OHLC (Open, High, Low, Close) chart for the notional price in USD of Bitcoin, sampled every second over the past 5 minutes.",
       "fieldConfig": {
         "defaults": {
@@ -1154,10 +1007,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 8,
         "w": 12,
         "x": 0,
-        "y": 25
+        "y": 18
       },
       "hideTimeOverride": false,
       "id": 9,
@@ -1197,7 +1050,7 @@
           "editorMode": "code",
           "format": 1,
           "rawQuery": true,
-          "rawSql": "SELECT timestamp as time, first(price) as open, last(price) as close, min(price) as lo, max(price) as hi, sum(amount) as vol\nFROM trades\nWHERE symbol = 'BTC-USDT' and $__timeFilter(timestamp) \nSAMPLE BY 5s ALIGN TO CALENDAR",
+          "rawSql": "SELECT timestamp as time, first(price) as open, last(price) as close, min(price) as lo, max(price) as hi, sum(amount) as vol\nFROM trades\nWHERE symbol = 'BTC-USDT' and $__timeFilter(timestamp) \nSAMPLE BY 1s ALIGN TO CALENDAR",
           "refId": "A",
           "selectedFormat": 2,
           "sql": {
@@ -1257,7 +1110,7 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
+            "showPoints": "never",
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -1355,9 +1208,9 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 11,
+        "w": 12,
         "x": 12,
-        "y": 25
+        "y": 19
       },
       "id": 4,
       "options": {
@@ -1450,6 +1303,6 @@
   "timezone": "",
   "title": "Live trades demo",
   "uid": "live-trades-demo",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }
