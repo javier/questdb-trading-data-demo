@@ -186,7 +186,7 @@ Contact us at: **[support@questdb.com](mailto:support@questdb.com)**
 
 - Nanosecond resolution
 
-[View the official public roadmap]([https://github.com/orgs/questdb/projects/1/views/5](https://github.com/orgs/questdb/projects/1/views/5))
+[View the official public roadmap](https://github.com/orgs/questdb/projects/1/views/5)
 
 ---
 
