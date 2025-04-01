@@ -96,7 +96,7 @@ For some more realistic queries, please open in a new tab the
 
 ### Visualization using a third party dashboard
 
-This demo includes two different real-time dashboard, one powered by Grafana, and one powered by Pulse.
+This demo includes two different real-time dashboards, one powered by Grafana, and another powered by Pulse.
 
 If you want to see your live data on a Grafana dashboard, please navigate in a new tab to
 [the demo Grafana dashboard](http://localhost:3000/d/live-trades-demo/live-trades-demo). The user is `admin` and password `quest`
