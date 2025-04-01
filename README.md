@@ -19,6 +19,9 @@ starts everything in one go.
 
 ## Pre-requisites
 
+If you need more context about why QuestDB is the best choice for storing Tick data, please refer
+to [the QuestDB For Tick Data](/docs/QuestDB-For-Tick-Data.md) page.
+
 A working installation of Docker and docker-compose.
 
 
