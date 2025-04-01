@@ -102,7 +102,7 @@ If you want to see your live data on a Grafana dashboard, please navigate in a n
 [the demo Grafana dashboard](http://localhost:3000/d/live-trades-demo/live-trades-demo). The user is `admin` and password `quest`
 
 If you want to see your live data on a Pulse dashboard, please navigate in a new tab to
-[the demo Pulse dashboard](http://localhost:8080/dash/29/Live%20Trades%20Demo). More info at ]Pulse](https://www.timestored.com/pulse/).
+[the demo Pulse dashboard](http://localhost:8080/dash/29/Live%20Trades%20Demo). More info at [Pulse](https://www.timestored.com/pulse/).
 
 ![trading data dashboard powered by Pulse](./pulse_trading_dashboard.png)
 
