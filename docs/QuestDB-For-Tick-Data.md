@@ -48,7 +48,7 @@ AI/ML tools such as data frame libraries natively.
 
 ## QuestDB's Storage Engine
 
-![QuestDB Storage Enrine](https://slabstatic.com/prod/assets/0tkl9ybv/post/m7e0rpj4/preimages/0o2-BPxkWuWElED-oXPuGnw1.png)
+![QuestDB Storage Engine](./questdb-storage-engine.png)
 
 - **Ideal data layout** for fast time-based queries: columnar store, time-partitioned, and time sorted without indexes
 
@@ -62,14 +62,14 @@ AI/ML tools such as data frame libraries natively.
 
 ## QuestDB leveraging existing Python infrastructure: example with Backtesting
 
-![Backtesting with QuestDB](https://slabstatic.com/prod/assets/0tkl9ybv/post/m7e0rpj4/preimages/o7kbooNSl0ADcD_tAzwQIySe.png)
+![Backtesting with QuestDB](./backtesting-with-questdb.png)
 
 ## SQL Queries
 
 QuestDB's querying language is SQL, with additional native time-series extensions. It includes Window Functions and
 Materialized Views.
 
-![Queries on the QuestDB Console](https://slabstatic.com/prod/assets/0tkl9ybv/post/m7e0rpj4/preimages/fhaFQWSiF5TVUyFAXn2BpuSy.png)
+![Queries on the QuestDB Console](./queries-on-the-questdb-console.png)
 
 ---
 
