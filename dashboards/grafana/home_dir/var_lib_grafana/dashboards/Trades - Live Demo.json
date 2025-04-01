@@ -616,7 +616,7 @@
         "type": "questdb-questdb-datasource",
         "uid": "P0F15568B0DD880D0"
       },
-      "description": "An OHLC (Open, High, Low, Close) chart for the notional price in USD of Bitcoin, sampled every second over the past 5 minutes.",
+      "description": "An OHLC (Open, High, Low, Close) chart for the notional price in USD of Bitcoin, sampled every 2 seconds.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -947,7 +947,7 @@
         "type": "questdb-questdb-datasource",
         "uid": "P0F15568B0DD880D0"
       },
-      "description": "An OHLC (Open, High, Low, Close) chart for the notional price in USD of Bitcoin, sampled every second over the past 5 minutes.",
+      "description": "An OHLC (Open, High, Low, Close) chart for the notional price in USD of Bitcoin, sampled every 2 seconds.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1050,7 +1050,7 @@
           "editorMode": "code",
           "format": 1,
           "rawQuery": true,
-          "rawSql": "SELECT timestamp as time, first(price) as open, last(price) as close, min(price) as lo, max(price) as hi, sum(amount) as vol\nFROM trades\nWHERE symbol = 'BTC-USDT' and $__timeFilter(timestamp) \nSAMPLE BY 1s ALIGN TO CALENDAR",
+          "rawSql": "SELECT timestamp as time, first(price) as open, last(price) as close, min(price) as lo, max(price) as hi, sum(amount) as vol\nFROM trades\nWHERE symbol = 'BTC-USDT' and $__timeFilter(timestamp) \nSAMPLE BY 2s ALIGN TO CALENDAR",
           "refId": "A",
           "selectedFormat": 2,
           "sql": {
