@@ -42,7 +42,7 @@ QuestDB avoids vendor lock-in by transforming its historical time partitions int
 moved to Object Stores. These Parquet files are then accessible by the firm's Python infrastructure, enabling the use of
 AI/ML tools such as data frame libraries natively.
 
-![QuestDB architecture](https://slabstatic.com/prod/assets/0tkl9ybv/post/m7e0rpj4/preimages/5w69k4H-otvPkwoQhsq1AmAb.png)
+![QuestDB architecture](./questdb-architecture.png)
 
 ---
 
